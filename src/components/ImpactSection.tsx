@@ -86,7 +86,7 @@ export function ImpactSection() {
           className="text-center mb-12 md:mb-16"
         >
           <motion.h2 
-            className="font-['Poppins',sans-serif] text-[#184e77] text-3xl md:text-4xl lg:text-5xl mb-4"
+            className="font-['Poppins',sans-serif] font-bold text-[#184e77] text-3xl md:text-5xl lg:text-6xl text-center mb-12 md:mb-16 uppercase"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}

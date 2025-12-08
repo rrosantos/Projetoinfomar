@@ -1278,7 +1278,7 @@ function HowToHelpSection() {
                           `Obrigado pelo interesse em: ${option.title}!`
                         )
                       }
-                      className={`w-full px-6 py-4 rounded-full font-['Poppins',sans-serif] font-bold text-base md:text-lg text-white bg-gradient-to-r ${option.buttonColor} hover:shadow-2xl transition-all duration-300 group-hover:scale-105 shadow-lg`}
+                      className={`w-full px-6 py-3 rounded-full font-['Poppins',sans-serif] font-bold text-base md:text-lg text-white bg-gradient-to-r from-[#168aad] to-[#52b69a] hover:from-[#52b69a] hover:to-[#168aad] transition-all duration-300 shadow-md hover:shadow-xl group-hover:scale-105`}
                     >
                       {option.buttonText}
                     </button>
@@ -1309,12 +1309,6 @@ function HowToHelpSection() {
           >
             <div
               className="inline-block rounded-3xl p-8 md:p-10"
-              style={{
-                background:
-                  "linear-gradient(135deg, rgba(22, 138, 173, 0.15) 0%, rgba(82, 182, 154, 0.15) 100%)",
-                backdropFilter: "blur(10px)",
-                border: "2px solid rgba(22, 138, 173, 0.3)",
-              }}
             >
               <p className="font-['Poppins',sans-serif] font-bold text-[#184e77] text-xl md:text-2xl lg:text-3xl mb-4">
                 Não sabe por onde começar?
@@ -1519,19 +1513,56 @@ function EndangeredSection() {
             className="max-w-4xl mx-auto text-center"
           >
             <div
-              className="p-8 md:p-12 rounded-3xl bg-white shadow-xl"
+              className="relative p-8 md:p-12 rounded-3xl overflow-hidden"
               style={{
-                border: "2px solid rgba(22, 138, 173, 0.3)",
+                background:
+                  "linear-gradient(135deg, #168aad 0%, #1e6091 50%, #184e77 100%)",
+                boxShadow:
+                  "0 20px 60px rgba(22, 138, 173, 0.4), 0 0 40px rgba(82, 182, 154, 0.2)",
               }}
             >
-              <h3 className="font-['Poppins',sans-serif] font-bold text-[#168aad] text-2xl md:text-3xl lg:text-4xl mb-6">
+              {/* Efeito de brilho */}
+              <div
+                className="absolute top-0 left-0 right-0 h-1/2 opacity-20"
+                style={{
+                  background:
+                    "linear-gradient(180deg, rgba(255,255,255,0.4) 0%, transparent 100%)",
+                }}
+              />
+
+              {/* Ícone decorativo */}
+              <div className="flex justify-center mb-6">
+                <div
+                  className="w-16 h-16 md:w-20 md:h-20 rounded-full flex items-center justify-center"
+                  style={{
+                    background:
+                      "linear-gradient(135deg, #d9ed92 0%, #52b69a 100%)",
+                    boxShadow: "0 8px 24px rgba(217, 237, 146, 0.4)",
+                  }}
+                >
+                  <span className="text-3xl md:text-4xl">🌊</span>
+                </div>
+              </div>
+
+              <h3 className="relative font-['Poppins',sans-serif] font-bold text-[#d9ed92] text-2xl md:text-3xl lg:text-4xl mb-6">
                 Por que isso importa?
               </h3>
-              <p className="font-['Inter',sans-serif] text-[#636363] text-lg md:text-xl lg:text-2xl leading-relaxed">
+              <p className="relative font-['Inter',sans-serif] text-white text-lg md:text-xl lg:text-2xl leading-relaxed">
                 Salvar essas espécies não é apenas proteger a beleza dos oceanos
                 — é garantir o equilíbrio de todo um ecossistema que sustenta a
                 vida no planeta.
               </p>
+
+              {/* Decoração de ondas no fundo */}
+              <div
+                className="absolute bottom-0 left-0 right-0 h-20 opacity-10"
+                style={{
+                  backgroundImage:
+                    "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23ffffff' d='M0,96L48,112C96,128,192,160,288,165.3C384,171,480,149,576,128C672,107,768,85,864,96C960,107,1056,149,1152,154.7C1248,160,1344,128,1392,112L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E\")",
+                  backgroundSize: "cover",
+                  backgroundPosition: "bottom",
+                }}
+              />
             </div>
           </motion.div>
         </div>
@@ -1738,8 +1769,8 @@ export default function App() {
         <HowToHelpSection />
         <TestimonialsSection />
         <GallerySection />
-        <PartnersSection />
         <BlogSection />
+        <PartnersSection />
         <FAQSection />
         <Footer />
       </main>

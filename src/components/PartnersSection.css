@@ -1,0 +1,140 @@
+@keyframes partners-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-250px * 8));
+  }
+}
+
+.partners-slider {
+  background: linear-gradient(135deg, #f8fdff 0%, #ffffff 100%);
+  box-shadow: 0 10px 20px -5px rgba(22, 138, 173, 0.125);
+  height: 120px;
+  margin: auto;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  max-width: 2000px;
+  border-radius: 16px;
+  border: 2px solid rgba(22, 138, 173, 0.1);
+}
+
+.partners-slider::before,
+.partners-slider::after {
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  content: "";
+  height: 120px;
+  position: absolute;
+  width: 150px;
+  z-index: 2;
+}
+
+.partners-slider::after {
+  right: 0;
+  top: 0;
+  transform: rotateZ(180deg);
+}
+
+.partners-slider::before {
+  left: 0;
+  top: 0;
+}
+
+.partners-slide-track {
+  animation: partners-scroll 40s linear infinite;
+  display: flex;
+  width: calc(250px * 16);
+}
+
+.partners-slide {
+  height: 120px;
+  width: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.partners-slide-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 16px;
+  transition: transform 0.3s ease;
+}
+
+.partners-slide-content:hover {
+  transform: scale(1.1);
+}
+
+.partners-logo {
+  font-size: 48px;
+}
+
+.partners-name {
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-size: 12px;
+  color: #184e77;
+  text-align: center;
+  line-height: 1.2;
+  max-width: 200px;
+}
+
+/* Pausar animação no hover */
+.partners-slider:hover .partners-slide-track {
+  animation-play-state: paused;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .partners-slider {
+    height: 100px;
+  }
+
+  .partners-slider::before,
+  .partners-slider::after {
+    height: 100px;
+    width: 80px;
+  }
+
+  .partners-slide {
+    height: 100px;
+    width: 200px;
+  }
+
+  .partners-slide-track {
+    width: calc(200px * 16);
+    animation: partners-scroll-mobile 35s linear infinite;
+  }
+
+  .partners-logo {
+    font-size: 36px;
+  }
+
+  .partners-name {
+    font-size: 10px;
+  }
+}
+
+@keyframes partners-scroll-mobile {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-200px * 8));
+  }
+}
+
+/* Acessibilidade - reduzir movimento */
+@media (prefers-reduced-motion: reduce) {
+  .partners-slide-track {
+    animation: none;
+  }
+}
