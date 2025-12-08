@@ -29,43 +29,11 @@ export function AnimalCarousel({ animals }: AnimalCarouselProps) {
   return (
     <div className="carousel-wrapper">
       {/* Control buttons */}
-      <motion.div 
-        className="flex justify-center items-center gap-4 mb-8"
-        initial={{ opacity: 0, y: -20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
-      >
-        <button
-          onClick={togglePause}
-          className="flex items-center gap-2 px-6 py-3 rounded-full font-['Inter',sans-serif] text-white transition-all duration-300 shadow-lg hover:shadow-xl"
-          style={{
-            background: isPaused 
-              ? 'linear-gradient(135deg, #52b69a 0%, #168aad 100%)'
-              : 'linear-gradient(135deg, #168aad 0%, #52b69a 100%)',
-          }}
-          aria-label={isPaused ? 'Retomar carrossel' : 'Pausar carrossel'}
-        >
-          {isPaused ? (
-            <>
-              <Play className="w-5 h-5" />
-              <span>Retomar</span>
-            </>
-          ) : (
-            <>
-              <Pause className="w-5 h-5" />
-              <span>Pausar</span>
-            </>
-          )}
-        </button>
-        <p className="font-['Inter',sans-serif] text-[#168aad] text-sm">
-          {animals.length} espécies em destaque
-        </p>
-      </motion.div>
+
 
       {/* Carousel container */}
       <div 
-        className={`carousel-container ${isPaused ? 'paused' : ''}`}
+        className={`carousel-container`}
       >
         {animals.map((animal, index) => (
           <motion.div
@@ -96,19 +64,6 @@ export function AnimalCarousel({ animals }: AnimalCarouselProps) {
                   </p>
                 </div>
               </div>
-              <div 
-                className="inline-block px-4 py-1.5 rounded-full mb-3 text-sm font-medium"
-                style={{
-                  backgroundColor: animal.status.toLowerCase().includes('criticamente') 
-                    ? '#ff4444' 
-                    : animal.status.toLowerCase().includes('perigo')
-                    ? '#ff9800'
-                    : '#ffc107',
-                  color: '#ffffff',
-                }}
-              >
-                {animal.status}
-              </div>
               <p className="font-['Inter',sans-serif] text-[#636363] text-sm md:text-base leading-relaxed">
                 {animal.description}
               </p>
@@ -116,38 +71,6 @@ export function AnimalCarousel({ animals }: AnimalCarouselProps) {
           </motion.div>
         ))}
       </div>
-
-      {/* Progress indicator dots */}
-      <motion.div 
-        className="flex justify-center gap-2 mt-8"
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6, delay: 0.2 }}
-      >
-        {animals.map((_, index) => (
-          <div
-            key={index}
-            className="w-2 h-2 rounded-full transition-all duration-300"
-            style={{
-              backgroundColor: '#168aad',
-              opacity: 0.3,
-            }}
-            aria-label={`Indicador ${index + 1} de ${animals.length}`}
-          />
-        ))}
-      </motion.div>
-
-      {/* Info text */}
-      <motion.p
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6, delay: 0.4 }}
-        className="text-center mt-6 font-['Inter',sans-serif] text-[#636363] text-sm"
-      >
-        Passe o mouse sobre o carrossel para pausar automaticamente
-      </motion.p>
     </div>
   );
 }
